@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www --config ./package.json",
-    "test": "./node_modules/jest/bin/jest.js",
-    "test:coverage": "./node_modules/jest/bin/jest.js --coverage"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@sentry/node": "^5.2.0",
