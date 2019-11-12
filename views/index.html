@@ -1,12 +1,41 @@
 {% extends "layout.html" %}
 
+{% from "tabs/macro.njk" import govukTabs %}
+
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">Interactive Probation Map</h1>
       <p class="govuk-body">An interactive map of probation areas overlaid with local authority, prisons and police force areas to illustrate the changes form the probation reform programme.</p>
+    
+      {% set beforeHtml %}
+      <h2 class="govuk-heading-l">Before</h2>
+      {% endset -%}
+
+      {% set afterHtml %}
+      <h2 class="govuk-heading-l">After</h2>
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Before",
+            id: "before",
+            panel: {
+              html: beforeHtml
+            }
+          },
+          {
+            label: "After",
+            id: "after",
+            panel: {
+              html: afterHtml
+            }
+          }
+        ]
+      }) }}
+    
     </div>
-    <div class="govuk-grid-column-one-third">
-    </div>
+   
   </div>
 {% endblock %}
