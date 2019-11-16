@@ -7,35 +7,10 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">Interactive Probation Map</h1>
       <p class="govuk-body">An interactive map of probation areas overlaid with local authority, prisons and police force areas to illustrate the changes form the probation reform programme.</p>
-    
-      {% set beforeHtml %}
-      <h2 class="govuk-heading-l">Before</h2>
-      {% endset -%}
 
-      {% set afterHtml %}
-      <h2 class="govuk-heading-l">After</h2>
-      {% endset -%}
+      <div class="map" id="map"></div>
 
-      {{ govukTabs({
-        items: [
-          {
-            label: "Before",
-            id: "before",
-            panel: {
-              html: beforeHtml
-            }
-          },
-          {
-            label: "After",
-            id: "after",
-            panel: {
-              html: afterHtml
-            }
-          }
-        ]
-      }) }}
     
     </div>
-   
   </div>
 {% endblock %}
