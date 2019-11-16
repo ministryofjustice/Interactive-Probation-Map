@@ -29,13 +29,12 @@ app.use(sassMiddleware({
   dest: path.join(__dirname, 'public'),
   debug: false,
   outputStyle: 'compressed',
-  indentedSyntax: true,
+  indentedSyntax: false,
   sourceMap: true
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 app.use('/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
-
 app.use('/', indexRouter)
 
 module.exports = app
