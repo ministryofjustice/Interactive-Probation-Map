@@ -1,36 +1,16 @@
-// var json = './data/Police_Force_Areas_December_2016_Full_Extent_Boundaries_in_England_and_Wales.geojson'
-var json = './data/sample.geojson'
-
-var style = new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: 'rgba(255, 255, 255, 0.6)'
-  }),
-  stroke: new ol.style.Stroke({
-    color: '#319FD3',
-    width: 1
-  }),
-  text: new ol.style.Text({
-    font: '12px Calibri,sans-serif',
-    fill: new ol.style.Fill({
-      color: '#000'
-    }),
-    stroke: new ol.style.Stroke({
-      color: '#fff',
-      width: 3
-    })
+var wmsLayer = new ol.layer.Tile({
+  source: new ol.source.TileWMS({
+    url: 'https://ons-inspire.esriuk.com/arcgis/services/Administrative_Boundaries/Counties_April_2019_EN_BFC/MapServer/WMSServer?',
+    params: {
+      LAYERS: '0',
+      TILED: true
+    },
+    serverType: 'geoserver'
+    // Countries have transparency, so do not fade tiles:
   })
 })
 
-var vectorLayer = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    url: json,
-    format: new ol.format.GeoJSON()
-  }),
-  style: function (feature) {
-    style.getText().setText(feature.get('name'))
-    return style
-  }
-})
+var centerOnEngland = ol.proj.transform([-3.4359729, 55.3780518], 'EPSG:4326', 'EPSG:3857')
 
 var map = new ol.Map({
   layers:
@@ -38,11 +18,11 @@ var map = new ol.Map({
     new ol.layer.Tile({
       source: new ol.source.OSM()
     }),
-    vectorLayer
+    wmsLayer
   ],
   target: 'map',
   view: new ol.View({
-    center: [102.0, 0.5],
-    zoom: 2
+    center: centerOnEngland,
+    zoom: 5
   })
 })
