@@ -59,6 +59,5 @@ typings/
 
 # next.js build output
 .next
-
-./public/stylesheets/styles.css
-./public/stylesheets/styles.css.map
+public/stylesheets/styles.css.map
+public/stylesheets/styles.css
